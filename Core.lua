@@ -50,6 +50,10 @@ local function Export()
 		Print("No bank data yet. Open your bank once, then run /gbv.")
 		return
 	end
+	if #snapshot.items == 0 then
+		Print("Your bank looks empty, so there is nothing to import.")
+		return
+	end
 	local info = string.format(
 		"%d item stacks from %s, %s",
 		#snapshot.items,

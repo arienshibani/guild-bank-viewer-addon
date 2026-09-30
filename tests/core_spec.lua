@@ -131,4 +131,19 @@ describe("Core (stubbed WoW API)", function()
 		_G.SlashCmdList.GUILDBANKVIEWER()
 		assert.matches("Open your bank", printed)
 	end)
+
+	it("does not export an empty bank (the web app rejects an empty import)", function()
+		local printed, shown
+		_G.print = function(msg)
+			printed = msg
+		end
+		ns.ShowExport = function()
+			shown = true
+		end
+		ns.fire(nil, "ADDON_LOADED", "GuildBankViewer")
+		ns.fire(nil, "BANKFRAME_OPENED")
+		_G.SlashCmdList.GUILDBANKVIEWER()
+		assert.is_nil(shown)
+		assert.matches("looks empty", printed)
+	end)
 end)
