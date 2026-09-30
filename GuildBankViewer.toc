@@ -1,0 +1,14 @@
+## Interface: 11508, 11509
+## Title: Guild Bank Viewer
+## Notes: Export your bank character's bank as an import string for guildbankviewer.com.
+## Author: Arien Shibani
+## Version: @project-version@
+## Category: Inventory
+## IconTexture: Interface\Icons\INV_Misc_Bag_10
+## SavedVariables: GuildBankViewerDB
+## X-Website: https://guildbankviewer.com
+
+Encode.lua
+Snapshot.lua
+UI.lua
+Core.lua
