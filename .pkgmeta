@@ -1,0 +1,13 @@
+package-as: GuildBankViewer
+
+ignore:
+  - .github
+  - .busted
+  - .gitignore
+  - .luacheckrc
+  - .luarocks
+  - stylua.toml
+  - tests
+  - fixtures
+  - CONTRIBUTING.md
+  - FORMAT.md
