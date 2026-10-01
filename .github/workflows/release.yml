@@ -2,6 +2,12 @@ name: Release
 on:
   push:
     branches: [main]
+  # Re-run the packager for an existing tag, e.g. after a failed upload.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to package, e.g. v1.0.0
+        required: true
 
 permissions:
   contents: write
@@ -21,13 +27,13 @@ jobs:
 
   package:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.release_created || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ needs.release-please.outputs.tag_name }}
+          ref: ${{ needs.release-please.outputs.tag_name || inputs.tag }}
       # Uploads to CurseForge and Wago when their project IDs
       # (TOC) and tokens (secrets) are set, and to the GitHub release.
       - uses: BigWigsMods/packager@v2
@@ -35,3 +41,7 @@ jobs:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
           GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+          # The packager skips branch pushes that have a tag at HEAD, expecting
+          # a separate tag-triggered run. Tags made by release-please never
+          # trigger one, so present this run as the tag build.
+          GITHUB_REF: refs/tags/${{ needs.release-please.outputs.tag_name || inputs.tag }}
