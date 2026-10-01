@@ -7,6 +7,8 @@
 ## IconTexture: Interface\Icons\INV_Misc_Bag_10
 ## SavedVariables: GuildBankViewerDB
 ## X-Website: https://guildbankviewer.com
+## X-Curse-Project-ID: 1720139
+## X-Wago-ID: mNwwwlNo
 
 Encode.lua
 Snapshot.lua
