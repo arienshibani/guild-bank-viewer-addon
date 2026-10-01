@@ -35,7 +35,7 @@ Paste the string into the web app's Import dialog and compare slots, icons and q
 ## Commits and releases
 
 [Conventional commits](https://www.conventionalcommits.org/). `release-please` opens a release PR; merging it
-tags `vX.Y.Z` and the packager uploads to CurseForge, Wago and WoWInterface.
+tags `vX.Y.Z` and the packager uploads to CurseForge and Wago.
 
 ## Patch day
 

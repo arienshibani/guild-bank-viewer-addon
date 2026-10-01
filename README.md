@@ -14,7 +14,7 @@ Only the 28 main bank slots are exported, not bank bags.
 
 ## Install
 
-CurseForge / Wago / WoWInterface (links will be added on release), or download a zip from
+CurseForge / Wago (links will be added on release), or download a zip from
 [Releases](../../releases) and extract `GuildBankViewer` into `World of Warcraft/_classic_era_/Interface/AddOns/`.
 
 ## Develop
